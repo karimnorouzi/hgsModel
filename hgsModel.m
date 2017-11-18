@@ -1,5 +1,4 @@
 classdef hgsModel < handle
-
    properties 
        verbos = 0
        RootDir
@@ -168,6 +167,12 @@ classdef hgsModel < handle
            fclose(fid);
            disp([OutputFile,' processed']);
       
+       end
+       function elements = readechos_gridbuilder(obj, filename)
+                elements = readechosgridbuilder(filename);
+       end
+       function writeechos_gridbuilder(obj, filename, elements)
+           writechosgridbuilder(filename, elements);
        end
 %        function   WriteVtkPmVariable(obj,variable)
 %            wedge = obj.prisim-1;
