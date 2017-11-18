@@ -1,0 +1,53 @@
+ tecplot mode                                                
+! gms mode                                                    
+! double xy                                                   
+! paraview mode                                               
+end
+write pm domain file                                        
+! no pm heads                                                 
+! no pm saturations                                           
+! no pm ice saturation                                        
+! no pm linear velocities (vx, vy, vz)                        
+! no pm concentrations                                        
+! no pm immobile/isotope fractionation concentrations         
+! no pm redox capacity                                        
+! no pm peclet number                                         
+! no pm diffusion peclet number                               
+! no pm element tortuosity                                    
+! no pm element k                                             
+! no pm element porosity                                      
+! no pm element storativity                                   
+! no pm element tortuosity                                    
+! no pm element fraction of compressible interbeds            
+! no pm permafrost                                            
+! no pm soil frost                                            
+! no pm compaction                                            
+! no pm delta z                                               
+! yes pm flux (qx, qy, qz)                                    
+! no pm depth to water table                                  
+! truncate pm domain                                          
+! -0.10000E+21 0.10000E+21
+! -0.10000E+21 0.10000E+21
+! -0.10000E+21 0.10000E+21
+end
+!---------------------------------------------
+write olf domain file                                       
+! no olf heads                                                
+! no olf linear velocities (vx, vy, vz)                       
+! no olf concentrations                                       
+! no olf immobile/isotope fractionation concentrations        
+! no olf redox capacity                                       
+! no olf/pm exchange flux                                     
+! no olf/pm solute exchange                                   
+! no olf et                                                   
+! truncate olf domain                                         
+! -0.10000E+21 0.10000E+21
+! -0.10000E+21 0.10000E+21
+! -0.10000E+21 0.10000E+21
+! yes olf max water depth                                     
+! compare surface water depth                                 
+! -0.10000000E+21 0.10000000E+21
+! -0.10000000E+21 0.10000000E+21
+! -0.10000000E+21 0.10000000E+21
+end
+!---------------------------------------------

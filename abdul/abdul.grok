@@ -1,0 +1,265 @@
+!--------------------------  Problem description
+Overland flow example 2
+abdul, Monday, July 25, 2005 at 09:42
+end title
+
+!--------------------------  Grid generation
+read gb 2d grid
+./gb/grid
+
+generate layers interactive
+    zone by layer
+
+    new layer
+        layer name
+        Base layer
+
+        uniform sublayering
+        5
+
+        elevation from gb file
+        ./gb/grid.nprop.Surface elevation - 1.5 m
+    end
+
+    new layer
+        layer name
+        Middle layer
+
+        uniform sublayering
+        5
+
+        elevation from gb file
+        ./gb/grid.nprop.Surface elevation - 0.5 m
+    end
+
+    new layer
+        layer name
+        Top layer
+
+        uniform sublayering
+        5
+
+        elevation from gb file
+        ./gb/grid.nprop.Surface elevation
+    end
+
+
+end ! generate layers interactive
+end grid generation
+
+!--------------------------  General simulation parameters
+units: kilogram-metre-second
+transient flow
+
+dual nodes for surface flow
+
+!mass balance output scientific format
+
+!--------------------------  Porous media properties
+use domain type
+porous media
+
+properties file
+abdul.mprops
+
+clear chosen zones
+choose zones all
+read properties
+BORDEN SAND (FIELD SCALE) - DIGITIZED
+
+finite difference mode
+
+!--------------------------  Overland flow properties
+use domain type
+surface
+
+properties file
+abdul.oprops
+
+! overland flow
+clear chosen faces
+choose faces top
+
+new zone
+1
+
+clear chosen zones
+choose zone number
+1
+read properties
+overland flow
+
+
+! stream channel
+clear chosen faces
+choose faces top gb
+./gb/grid.echos.stream channel
+
+new zone
+2
+
+clear chosen zones
+choose zone number
+2
+
+read properties
+stream channel
+
+!--------------------------  Overland flow
+use domain type
+porous media
+
+choose nodes all
+initial head
+2.78
+
+use domain type
+surface
+
+clear chosen nodes
+choose nodes all
+initial water depth
+1.0d-4
+
+clear chosen nodes
+choose nodes top gb
+./gb/grid.nchos.Outlet
+
+
+create segment set
+outlet
+
+boundary condition
+    type
+    critical depth
+    
+    name
+    CritDepth_outlet
+    
+    segment set
+    outlet
+    
+    tecplot output
+
+end 
+
+clear chosen nodes
+choose nodes top gb
+./gb/grid.nchos.Not outlet
+
+create segment set
+non_outlet
+
+
+boundary condition
+    type
+    critical depth
+    
+    name
+    CritDepth_rest
+    
+    segment set
+    non_outlet
+
+    tecplot output
+
+end ! flux bc
+
+clear chosen nodes
+choose nodes top
+
+create face set
+top
+
+boundary condition
+    type
+    flux
+
+    face set
+    top
+
+    time value table
+    ! experiment 1: 2 cm/hr -> 5.555e-6 m/s for 3000 s (50 min)
+    !
+    !  time     flux
+    0.0      5.555e-6
+    3000.0   0.0
+    end
+
+    tecplot output
+
+end ! flux bc
+
+use domain type
+porous media
+
+Newton maximum iterations
+15
+Jacobian epsilon
+1.0d-6
+Newton absolute convergence criteria
+1.0d-3
+Newton residual convergence criteria
+1.0d-3
+
+!--------------------------  Timestep controls
+head control
+0.5
+saturation control
+0.050
+newton iteration control
+10
+
+maximum timestep
+100.
+initial timestep
+0.5
+maximum timestep multiplier
+2.0
+minimum timestep multiplier
+0.5
+
+!underrelaxation factor
+!0.1
+compute underrelaxation factor
+
+flow solver maximum iterations
+1000
+
+output times
+1
+   300.0
+   600.0
+   900.0
+  1200.0
+  1500.0
+  3000.0
+  4500.0
+  6000.0
+end
+
+!--------------------------  Output
+make observation point
+point1
+65.9  2.86  2.98
+
+make observation well
+well1
+65.9  2.86  2.98
+65.9  2.86  0.
+
+skip on
+
+clear chosen nodes
+choose nodes top gb
+./gb/grid.nchos.Outlet
+
+set hydrograph nodes
+Outlet
+
+clear chosen nodes
+choose nodes top gb
+./gb/grid.nchos.Upstream
+
+set hydrograph nodes
+Upstream

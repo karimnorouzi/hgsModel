@@ -1,0 +1,37 @@
+overland flow
+
+x friction
+0.3
+
+y friction
+0.3
+
+rill storage height
+0.002  3.75d-3
+
+!obstruction storage height
+!0.25
+
+coupling length
+1.0e-1
+
+end material
+
+stream channel
+
+x friction
+0.03
+
+y friction
+0.03
+
+rill storage height
+0.002  3.75d-3
+
+!obstruction storage height
+!0.25
+
+coupling length
+1.0e-1
+
+end material

@@ -1,0 +1,2 @@
+           CPU,             NEQ,      time_step,    NR_iter,    solver_iter,    Global_assembly,     Precondition,     Solver,      BC_sets,      4MajorTimes,        Total_time
+              1,          23324,             68,             82,           3499,  25.705    , 0.20008    ,  6.1440    , 0.53915E-01,  32.103    ,  36.492    

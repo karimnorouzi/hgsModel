@@ -1,0 +1,76 @@
+debug off                                                   
+! -------------------------------------------------- Pause execution
+! pause timestep                                              
+! pause at time                                               
+!             1.00000
+! pause flow convergence loop                                 
+! pause newton loop                                           
+! -------------------------------------------------- Produce snapshot 
+! write output files                                          
+! -------------------------------------------------- Produce watch node output 
+! watch node list                                             
+!		1 
+! end   ! watch node list
+! write flow matrices                                         
+! write krw file                                              
+!      debug_krw_data.lst
+! write overland flow                                         
+! write evapotranspiration                                    
+! write delval node info                                      
+! write resval node info                                      
+! time progress                                               
+! -------------------------------------------------- Output format
+! --------------------------------------------------		1 = fixed
+! --------------------------------------------------		2 = scientific
+! --------------------------------------------------		3 = general
+! time format                                                 
+!               1
+! mass balance format                                         
+!               1
+! -------------------------------------------------- Flow solver
+! flow solver convergence criteria                            
+!         0.10000E-09
+! flow maximum iterations                                     
+!            1000
+! flow solver detail                                          
+!               0
+! -------------------------------------------------- Newton iteration
+! newton maximum iterations                                   
+!              15
+! newton minimum iterations                                   
+!               0
+! newton absolute convergence criteria                        
+!         0.10000E-02
+! newton residual convergence criteria                        
+!         0.10000E-02
+! compute underrelaxation factor                              
+!               T
+! nodal flow check                                            
+!               T
+! nodal flow check tolerance                                  
+!         0.10000E-01
+! newton maximum update for head                              
+!         0.10000E+01
+! newton maximum update for depth                             
+!         0.10000E-01
+! newton maximum residual increase                            
+!               F
+!         0.10000E+31
+! -------------------------------------------------- General timestep
+! maximum timestep                                            
+!         0.10000E+03
+! force timestep                                              
+!             0.50000
+! -------------------------------------------------- Adaptive timestep targets
+! head change target                                          
+!             0.50000
+! saturation change target                                    
+!             0.05000
+! water depth change target                                   
+!          1000.00000
+! newton target                                               
+!              10
+! minimum timestep multiplier                                 
+!             0.50000
+! maximum timestep multiplier                                 
+!             2.00000
